@@ -1,11 +1,12 @@
 import React from 'react'
 import pr from '../assets/pr.png'
+import './Layout.css'
 
 export const Footer = () => {
     return (
 
         <footer className="bg-white shadow dark:bg-gray-800 ">
-            <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8 fixed-bottom-0">
+            <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <a href="https://www.youtube.com/watch?v=17Bz8rNJNsQ" className="flex items-center mb-4 sm:mb-0">
                         <img src={pr} className="h-8 mr-3" alt="Pato Rey" />
