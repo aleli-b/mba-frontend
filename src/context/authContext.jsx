@@ -17,9 +17,10 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('token', JSON.stringify(loginData.data.token));
             localStorage.setItem('user', JSON.stringify(loginData.data.user));
             setUser(loginData.data.user)
-            setToken(loginData.data.token); 
-            alert(`Login correcto`);
+            setToken(loginData.data.token);             
+            setTimeout(() => {             
             navigate('/');
+        }, 2000)
         } catch(error) {
             if(error.tokenInvalid) logout()
             console.log(error)
@@ -29,6 +30,7 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         setUser(null)
         setToken(null)
+        navigate('/login')
         localStorage.removeItem('token')
         localStorage.removeItem('user')
     }

@@ -1,0 +1,5 @@
+@media (min-height: 600px) {
+  .form-container {
+    height: calc(100vh - 245px);
+  }
+}

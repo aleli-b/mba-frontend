@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useState } from 'react'
+import { AdminRoute } from './components/guard/AdminRoute';
 import { Header } from './layout/Header'
 import { Footer } from './layout/Footer'
-import { Home } from './pages/Home'
-import { Login } from './pages/Login';
+import { Home } from './pages/Home/Home'
+import { Login } from './pages/Login/Login';
 import { AuthProvider } from './context/authContext';
+import { UserAdmin } from './pages/Admin/UserAdmin/UserAdmin';
 import './App.css'
 
 function App() {
@@ -15,8 +16,9 @@ function App() {
         <AuthProvider>
           <Header />
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={<AdminRoute><Home /></AdminRoute>} />
             <Route path='/login' element={<Login />} />
+            <Route path='/user-admin' element={<AdminRoute><UserAdmin /></AdminRoute>} />
           </Routes>
           <Footer />
         </AuthProvider>

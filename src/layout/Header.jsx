@@ -1,6 +1,6 @@
 import React from 'react'
 import pr from '../assets/pr.png'
-import { Link } from 'react-router-dom';
+import { useAuth } from '../context/authContext'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -17,6 +17,8 @@ function classNames(...classes) {
 }
 
 export const Header = () => {
+  
+  const auth = useAuth()  
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -73,17 +75,8 @@ export const Header = () => {
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
-                <a href='/login'>
-                  <button
-                    type="button"
-                    className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  >
-                    <span className="">Login</span>
-                  </button>
-                </a>
-
-                {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
+                {auth.user ?
+                  <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
@@ -107,10 +100,10 @@ export const Header = () => {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            href="/user-admin"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Your Profile
+                            Tabla de Usuarios
                           </a>
                         )}
                       </Menu.Item>
@@ -129,6 +122,7 @@ export const Header = () => {
                           <a
                             href="#"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            onClick={auth.logout}
                           >
                             Sign out
                           </a>
@@ -137,6 +131,17 @@ export const Header = () => {
                     </Menu.Items>
                   </Transition>
                 </Menu>
+                  :      
+                <a href='/login'>
+                  <button
+                    type="button"
+                    className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  >
+                    <span className="">Login</span>
+                  </button>
+                </a>
+
+                }
               </div>
             </div>
           </div>
