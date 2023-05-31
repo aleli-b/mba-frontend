@@ -52,7 +52,7 @@ export const UserAdmin = () => {
 
                 (
 
-                    <table className="border-collapse table-auto w-full text-sm">
+                    <table className="border-collapse table-auto w-full text-sm h-screen">
                         <thead>
                             <tr>
                                 <th className="border-b dark:border-slate-600 font-medium p-4 pl-8 pb-3 text-slate-400 dark:text-slate-200 text-left bg-gray-900">#</th>
